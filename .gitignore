@@ -1,0 +1,26 @@
+# 依赖（含指向 dsh 缓存的 junction/symlink，切勿提交）
+node_modules/
+
+# WorkBuddy 内部工作日志与会话数据
+.workbuddy/
+
+# 构建/安装过程产生的备份与临时文件
+*.bak
+*.bak-*
+*.sync-tmp
+*.tgz
+
+# pnpm/npm 调试日志
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 本地环境变量
+.env
+.env.local

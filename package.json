@@ -1,0 +1,67 @@
+{
+  "name": "@yuri/dsh-plugin-guard",
+  "version": "0.1.0",
+  "description": "dsh 插件安全审计与清理工具：列出/筛选插件，删除前强制评估依赖关系与运行状态，评估通过且用户确认后才彻底清理插件本体、配置、缓存、注册信息与残留文件。",
+  "type": "module",
+  "private": true,
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "test": "node --experimental-strip-types --test tests/*.test.ts"
+  },
+  "dependencies": {},
+  "engines": {
+    "dsh": "^0.2.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.2",
+    "@deepseek-ai/schemastery": "~3.18.5",
+    "@deepseek-ai/dsh-home-paths": "0.2.1-rc.2"
+  },
+  "devDependencies": {
+    "tsdown": "0.19.0",
+    "typescript": "^5.7.3",
+    "yaml": "^2.6.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ],
+      "platform": "web"
+    }
+  },
+  "dshx": {
+    "contributes": {
+      "tools": [
+        "plugin_guard_list",
+        "plugin_guard_evaluate",
+        "plugin_guard_cleanup",
+        "plugin_guard_scan",
+        "plugin_guard_menu"
+      ]
+    }
+  }
+}

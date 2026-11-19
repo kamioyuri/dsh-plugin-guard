@@ -1,0 +1,6 @@
+# dsh bundle patch：插件 id + 包名，dsh 据此把本插件挂进 profile 的 layer 栈。
+# 顶层是 YAML 数组；insert 无 id 时追加到根。
+- insert:
+    - id: plugin-guard
+      name: "@yuri/dsh-plugin-guard"
+      config: {}
